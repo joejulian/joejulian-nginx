@@ -8,6 +8,10 @@ server {
   ssl on;
   ssl_certificate      <%= ssl_cert %>;
   ssl_certificate_key  <%= ssl_key %>;
+<% if @ssl_client_certificate %>
+  ssl_client_certificate  <%= ssl_client_certificate %>;
+  ssl_verify_client  optional;
+<% end %>
 
   ssl_session_timeout  5m;
 
