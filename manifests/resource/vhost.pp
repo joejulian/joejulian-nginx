@@ -62,7 +62,7 @@ define nginx::resource::vhost(
   $location_cfg_append    = undef,
   $try_files              = undef
 ) {
-  $names = split($name)
+  $names = split($name, ' ')
   $stubname = $names[0]
 
   File {
