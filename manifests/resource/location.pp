@@ -64,6 +64,9 @@ define nginx::resource::location(
   $try_files            = undef,
   $location
 ) {
+  $names = split($name, ' ')
+  $stubname = $names[0]
+
   File {
     owner  => 'root',
     group  => 'root',
@@ -101,7 +104,7 @@ define nginx::resource::location(
 
   ## Create stubs for vHost File Fragment Pattern
   if ($ssl_only != 'true') {
-    file {"${nginx::config::nx_temp_dir}/nginx.d/${vhost}-500-${name}":
+    file {"${nginx::config::nx_temp_dir}/nginx.d/${vhost}-500-${stubname}":
       ensure  => $ensure_real,
       content => $content_real,
     }
@@ -109,7 +112,7 @@ define nginx::resource::location(
 
   ## Only create SSL Specific locations if $ssl is true.
   if ($ssl == 'true') {
-    file {"${nginx::config::nx_temp_dir}/nginx.d/${vhost}-800-${name}-ssl":
+    file {"${nginx::config::nx_temp_dir}/nginx.d/${vhost}-800-${stubname}-ssl":
       ensure  => $ensure_real,
       content => $content_real,
     }
