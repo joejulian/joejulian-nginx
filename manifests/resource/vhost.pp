@@ -71,6 +71,10 @@ define nginx::resource::vhost(
     mode  => '0644',
   }
 
+  logfile::log { "${nginx::params::nx_logdir}/${stubname}.access.log":
+    type => 'nginx',
+  }
+
   # Add IPv6 Logic Check - Nginx service will not start if ipv6 is enabled
   # and support does not exist for it in the kernel.
   if ($ipv6_enable == 'true') and ($ipaddress6)  {

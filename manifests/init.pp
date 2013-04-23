@@ -57,6 +57,14 @@ class nginx (
     service_restart => $service_restart,
   }
 
+  logfile::log { "${nginx::params::nx_logdir}/access.log":
+    type => 'nginx',
+  }
+
+  logfile::log {"${nginx::params::nx_logdir}/error.log":
+    type => 'nginx',
+  }
+
   # Allow the end user to establish relationships to the "main" class
   # and preserve the relationship to the implementation classes through
   # a transitive relationship to the composite class.

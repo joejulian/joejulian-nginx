@@ -1,5 +1,5 @@
 name    'puppetlabs-nginx'
-version '0.0.2'
+version '0.0.3'
 source 'http://github.com/puppetlabs/puppetlabs-nginx'
 author 'puppetlabs'
 license 'Apache License Version 2.0'
@@ -9,3 +9,4 @@ project_page 'http://github.com/puppetlabs/puppetlabs-nginx'
 
 dependency 'puppetlabs/stdlib', '>= 0.1.6'
 dependency 'joejulian/yum', '>= 2.0.1'
+dependency 'joejulian/logfile', '>= 1.0.0'
